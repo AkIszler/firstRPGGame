@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3qjwtpg85xs6"]
+[gd_scene load_steps=8 format=3 uid="uid://b3qjwtpg85xs6"]
+
+[ext_resource type="FontFile" uid="uid://de64tnmnphsmf" path="res://Fonts/UbuntuMono-Regular.ttf" id="1_jc4hc"]
+[ext_resource type="Script" path="res://userInput.gd" id="2_7lojc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fohg"]
 bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[sub_resource type="Theme" id="Theme_2paew"]
+default_font = ExtResource("1_jc4hc")
+default_font_size = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ieyeh"]
 bg_color = Color(0.259294, 0.259294, 0.259294, 1)
@@ -53,6 +60,7 @@ theme_override_constants/separation = 15
 [node name="gameInfo" type="PanelContainer" parent="background/margin/Rows"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = SubResource("Theme_2paew")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ieyeh")
 
 [node name="inputArea" type="PanelContainer" parent="background/margin/Rows"]
@@ -62,4 +70,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_6r1qe")
 
 [node name="userInput" type="LineEdit" parent="background/margin/Rows/inputArea"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jc4hc")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2nphx")
+script = ExtResource("2_7lojc")
