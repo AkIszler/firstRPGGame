@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3qjwtpg85xs6"]
+
+[ext_resource type="Script" path="res://scripts/main_game.gd" id="1_btd5m"]
+[ext_resource type="FontFile" uid="uid://de64tnmnphsmf" path="res://Fonts/UbuntuMono-Regular.ttf" id="2_ph74p"]
+[ext_resource type="Script" path="res://scripts/userInput.gd" id="3_02u73"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fohg"]
+bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[sub_resource type="Theme" id="Theme_2paew"]
+default_font = ExtResource("2_ph74p")
+default_font_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ieyeh"]
+bg_color = Color(0.259294, 0.259294, 0.259294, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6r1qe"]
+bg_color = Color(0.340339, 0.340339, 0.340339, 1)
+border_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nphx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jxw61"]
+
+[node name="MainGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_btd5m")
+
+[node name="background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5fohg")
+
+[node name="margin" type="MarginContainer" parent="background"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Rows" type="VBoxContainer" parent="background/margin"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="gameInfo" type="PanelContainer" parent="background/margin/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_2paew")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ieyeh")
+
+[node name="HistoryRow" type="VBoxContainer" parent="background/margin/Rows/gameInfo"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="background/margin/Rows/gameInfo/HistoryRow"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="inputArea" type="PanelContainer" parent="background/margin/Rows"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6r1qe")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="background/margin/Rows/inputArea"]
+layout_mode = 2
+
+[node name="Carot" type="Label" parent="background/margin/Rows/inputArea/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "   >  "
+uppercase = true
+
+[node name="userInput" type="LineEdit" parent="background/margin/Rows/inputArea/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_ph74p")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2nphx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jxw61")
+max_length = 100
+script = ExtResource("3_02u73")
+
+[connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="." method="_on_user_input_text_submitted"]
+[connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="background/margin/Rows/inputArea/HBoxContainer/userInput" method="_on_text_submitted"]

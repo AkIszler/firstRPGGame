@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://b3qjwtpg85xs6"]
 
-[ext_resource type="Script" path="res://main_game.gd" id="1_g4xu0"]
-[ext_resource type="FontFile" uid="uid://de64tnmnphsmf" path="res://Fonts/UbuntuMono-Regular.ttf" id="1_jc4hc"]
-[ext_resource type="Script" path="res://userInput.gd" id="2_7lojc"]
+[ext_resource type="Script" path="res://scripts/main_game.gd" id="1_btd5m"]
+[ext_resource type="FontFile" uid="uid://de64tnmnphsmf" path="res://Fonts/UbuntuMono-Regular.ttf" id="2_ph74p"]
+[ext_resource type="Script" path="res://scripts/userInput.gd" id="3_02u73"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fohg"]
 bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 
 [sub_resource type="Theme" id="Theme_2paew"]
-default_font = ExtResource("1_jc4hc")
+default_font = ExtResource("2_ph74p")
 default_font_size = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ieyeh"]
@@ -39,7 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_g4xu0")
+script = ExtResource("1_btd5m")
 
 [node name="background" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -67,6 +67,16 @@ size_flags_vertical = 3
 theme = SubResource("Theme_2paew")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ieyeh")
 
+[node name="historyMargin" type="MarginContainer" parent="background/margin/Rows/gameInfo"]
+layout_mode = 2
+
+[node name="historyScroll" type="ScrollContainer" parent="background/margin/Rows/gameInfo/historyMargin"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="HistoryRow" type="VBoxContainer" parent="background/margin/Rows/gameInfo/historyMargin/historyScroll"]
+layout_mode = 2
+
 [node name="inputArea" type="PanelContainer" parent="background/margin/Rows"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
@@ -84,12 +94,12 @@ uppercase = true
 [node name="userInput" type="LineEdit" parent="background/margin/Rows/inputArea/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("1_jc4hc")
+theme_override_fonts/font = ExtResource("2_ph74p")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2nphx")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jxw61")
 max_length = 100
-script = ExtResource("2_7lojc")
+script = ExtResource("3_02u73")
 
-[connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="." method="_on_user_input_text_submitted"]
+[connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="." method="_input_text_submitted"]
 [connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="background/margin/Rows/inputArea/HBoxContainer/userInput" method="_on_text_submitted"]

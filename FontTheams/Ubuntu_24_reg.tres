@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d2rqp0rit7ww6"]
+
+[ext_resource type="FontFile" uid="uid://de64tnmnphsmf" path="res://Fonts/UbuntuMono-Regular.ttf" id="1_cmxu7"]
+
+[resource]
+resource_local_to_scene = true
+default_font = ExtResource("1_cmxu7")
+default_font_size = 24
