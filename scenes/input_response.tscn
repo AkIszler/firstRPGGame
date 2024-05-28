@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://d8fsdgp5qt81"]
+[gd_scene load_steps=3 format=3 uid="uid://d8fsdgp5qt81"]
 
+[ext_resource type="Script" path="res://scripts/input_response.gd" id="1_alt2p"]
 [ext_resource type="Theme" uid="uid://d2rqp0rit7ww6" path="res://FontTheams/Ubuntu_24_reg.tres" id="1_ap3vs"]
 
 [node name="inputResponse" type="VBoxContainer"]
+script = ExtResource("1_alt2p")
 
 [node name="userHistory" type="Label" parent="."]
 layout_mode = 2
@@ -10,7 +12,8 @@ theme = ExtResource("1_ap3vs")
 theme_override_colors/font_color = Color(0.176, 0.96, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = " > "
+text = " > heyyyyllllo
+"
 
 [node name="userResponse" type="Label" parent="."]
 layout_mode = 2
