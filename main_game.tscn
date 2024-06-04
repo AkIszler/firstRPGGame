@@ -67,6 +67,13 @@ size_flags_vertical = 3
 theme = SubResource("Theme_2paew")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ieyeh")
 
+[node name="ScrollContainer" type="ScrollContainer" parent="background/margin/Rows/gameInfo"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="historyBox" type="HBoxContainer" parent="background/margin/Rows/gameInfo/ScrollContainer"]
+layout_mode = 2
+
 [node name="inputArea" type="PanelContainer" parent="background/margin/Rows"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
