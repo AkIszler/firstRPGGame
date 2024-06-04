@@ -1,8 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqqe2y6u1oev2"]
+[gd_scene load_steps=8 format=3 uid="uid://dqqe2y6u1oev2"]
 
-[ext_resource type="Script" path="res://main_game.gd" id="1_g4xu0"]
 [ext_resource type="FontFile" uid="uid://de64tnmnphsmf" path="res://Fonts/UbuntuMono-Regular.ttf" id="1_jc4hc"]
-[ext_resource type="Script" path="res://userInput.gd" id="2_7lojc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fohg"]
 bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
@@ -39,7 +37,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_g4xu0")
 
 [node name="background" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -67,11 +64,12 @@ size_flags_vertical = 3
 theme = SubResource("Theme_2paew")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ieyeh")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="background/margin/Rows/gameInfo"]
+[node name="Scroll" type="ScrollContainer" parent="background/margin/Rows/gameInfo"]
 layout_mode = 2
+follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="historyBox" type="HBoxContainer" parent="background/margin/Rows/gameInfo/ScrollContainer"]
+[node name="historyBox" type="HBoxContainer" parent="background/margin/Rows/gameInfo/Scroll"]
 layout_mode = 2
 
 [node name="inputArea" type="PanelContainer" parent="background/margin/Rows"]
@@ -96,7 +94,6 @@ theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2nphx")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jxw61")
 max_length = 100
-script = ExtResource("2_7lojc")
 
 [connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="." method="_on_user_input_text_submitted"]
 [connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="background/margin/Rows/inputArea/HBoxContainer/userInput" method="_on_text_submitted"]

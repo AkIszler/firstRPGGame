@@ -4,7 +4,14 @@ extends Control
 const InputRespose = preload("res://scenes/input_response.tscn")
 
 @onready var history_rows = $background/margin/Rows/gameInfo/historyMargin/historyScroll/HistoryRow
+@onready var scroll = $background/margin/Rows/gameInfo/historyMargin/historyScroll
+@onready var scrollbar = scroll.get_v_scroll_bar()
 
+func _ready() -> void:
+	scrollbar.connect("changed",self, "_scroll_changed")
+
+func _scroll_changed():
+	scroll.scroll_verical = scrollbar.max_value
 
 func _input_text_submitted(new_text: String) -> void:
 	print(new_text) # for debugging
