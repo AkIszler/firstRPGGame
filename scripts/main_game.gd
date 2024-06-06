@@ -11,7 +11,8 @@ func _ready() -> void:
 	scrollbar.connect("changed",self, "_scroll_changed")
 
 func _scroll_changed():
-	scroll.scroll_verical = scrollbar.max_value
+	scroll.scroll_vertical = scroll.max_value
+
 
 func _input_text_submitted(new_text: String) -> void:
 	print(new_text) # for debugging
@@ -21,15 +22,5 @@ func _input_text_submitted(new_text: String) -> void:
 
 
 func ReturnToSender (new_text: String) -> String:
-	var returnMsg = ""
-	
-	if new_text == "hi mom":
-		returnMsg = "Hello Son"
-		
-	elif new_text == "Hi Son":
-			returnMsg = "Hi Mom!"	
-
-	else:
-		returnMsg = "I don't know what you said"
-
+	var returnMsg = new_text
 	return returnMsg

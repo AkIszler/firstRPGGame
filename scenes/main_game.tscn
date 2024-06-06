@@ -76,7 +76,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="historyScroll" type="ScrollContainer" parent="background/margin/Rows/gameInfo/historyMargin"]
 layout_mode = 2
-horizontal_scroll_mode = 0
+follow_focus = true
 
 [node name="HistoryRow" type="VBoxContainer" parent="background/margin/Rows/gameInfo/historyMargin/historyScroll"]
 layout_mode = 2
