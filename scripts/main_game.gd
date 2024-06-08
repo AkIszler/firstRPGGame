@@ -20,8 +20,11 @@ func scroll_changed():
 
 
 func _input_text_submitted(new_text: String) -> void:
-	print(new_text) # for debugging
-	var inputResponse = InputRespose.instantiate()
+
+	if new_text.is_empty():
+		return # prevent empty input
+
+	var inputResponse = InputRespose.instantiate()	
 	inputResponse.Set_Text(new_text, ReturnToSender(new_text)) #
 	history_rows.add_child(inputResponse)
 
