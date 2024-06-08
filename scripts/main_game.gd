@@ -32,6 +32,9 @@ func _input_text_submitted(new_text: String) -> void:
 	inputResponse.Set_Text(new_text, ReturnToSender(new_text)) #
 	history_rows.add_child(inputResponse)
 
+	if history_rows.get_child_count() > max_lines_held:
+		history_rows.remove_child(history_rows.get_children()[0])
+
 
 func ReturnToSender (new_text: String) -> String:
 	var returnMsg = ""
