@@ -3,7 +3,11 @@ extends Control
 
 const InputRespose = preload("res://scenes/input_response.tscn")
 
+@export var max_lines_held : int = 30
+
 var max_scroll_val = 0;
+
+
 
 @onready var history_rows = $background/margin/Rows/gameInfo/historyScroll/HistoryRow
 @onready var scroll = $background/margin/Rows/gameInfo/historyScroll

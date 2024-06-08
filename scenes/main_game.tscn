@@ -74,6 +74,7 @@ horizontal_scroll_mode = 0
 
 [node name="HistoryRow" type="VBoxContainer" parent="background/margin/Rows/gameInfo/historyScroll"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="inputArea" type="PanelContainer" parent="background/margin/Rows"]
 custom_minimum_size = Vector2(0, 60)
