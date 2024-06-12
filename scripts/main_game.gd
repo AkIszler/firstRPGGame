@@ -8,7 +8,7 @@ const InputRespose = preload("res://scenes/input_response.tscn")
 var max_scroll_val = 0;
 
 
-
+@onready var commandProcess = $CommandNode
 @onready var history_rows = $background/margin/Rows/gameInfo/historyScroll/HistoryRow
 @onready var scroll = $background/margin/Rows/gameInfo/historyScroll
 @onready var scrollbar = scroll.get_v_scroll_bar()
@@ -25,18 +25,17 @@ func scroll_changed():
 
 func _input_text_submitted(new_text: String) -> void:
 
+	var response = commandProcess.Process_Command(new_text);
+
 	if new_text.is_empty():
 		return # prevent empty input
 
 	var inputResponse = InputRespose.instantiate()	
-	inputResponse.Set_Text(new_text, ReturnToSender(new_text)) #
+	inputResponse.Set_Text(new_text, " " + response) #
 	history_rows.add_child(inputResponse)
+	keep_history_clear()
 
+
+func keep_history_clear():	
 	if history_rows.get_child_count() > max_lines_held:
 		history_rows.remove_child(history_rows.get_children()[0])
-
-
-func ReturnToSender (new_text: String) -> String:
-	var returnMsg = " " + new_text.to_lower()
-
-	return returnMsg 
