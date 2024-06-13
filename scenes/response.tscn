@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxjb42k7cld24"]
+
+[ext_resource type="Theme" uid="uid://d2rqp0rit7ww6" path="res://FontTheams/Ubuntu_24_reg.tres" id="1_w3bob"]
+
+[node name="userResponse" type="Label"]
+custom_minimum_size = Vector2(1000, 0)
+layout_direction = 2
+offset_left = 5.0
+offset_right = 257.0
+offset_bottom = 25.0
+size_flags_vertical = 0
+theme = ExtResource("1_w3bob")
+text = "Oh that sounds great!"
+autowrap_mode = 2
+visible_characters_behavior = 1
+text_direction = 1

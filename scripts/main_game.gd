@@ -2,6 +2,7 @@ extends Control
 
 
 const InputRespose = preload("res://scenes/input_response.tscn")
+const Response = preload("res://scenes/response.tscn")
 
 @export var max_lines_held : int = 30
 
@@ -16,6 +17,11 @@ var max_scroll_val = 0;
 func _ready() -> void:
 	scrollbar.changed.connect(scroll_changed)
 	max_scroll_val = scrollbar.max_value
+	var startingMsg = Response.instantiate()
+	startingMsg.text = "you wake up in a dark room with no memory, you have to get out! use the command 'help' to see your commands"
+	add_response_to_history(startingMsg)
+
+
 
 func scroll_changed():
 	if max_scroll_val != scrollbar.max_value:
@@ -32,8 +38,12 @@ func _input_text_submitted(new_text: String) -> void:
 
 	var inputResponse = InputRespose.instantiate()	
 	inputResponse.Set_Text(new_text, response) #
-	history_rows.add_child(inputResponse)
+	add_response_to_history(inputResponse)
+
+func add_response_to_history(response: Control):
+	history_rows.add_child(response)
 	keep_history_clear()
+
 
 
 func keep_history_clear():	

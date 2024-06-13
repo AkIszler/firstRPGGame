@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwh3xiymotgsh"]
+
+[ext_resource type="Theme" uid="uid://d2rqp0rit7ww6" path="res://FontTheams/Ubuntu_24_reg.tres" id="1_47whl"]
+
+[node name="userHistory" type="Label"]
+theme = ExtResource("1_47whl")
+theme_override_colors/font_color = Color(0.176, 0.96, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = " > heyyyyllllo
+"

@@ -1,21 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://d8fsdgp5qt81"]
+[gd_scene load_steps=7 format=3 uid="uid://d8fsdgp5qt81"]
 
 [ext_resource type="Script" path="res://scripts/input_response.gd" id="1_alt2p"]
-[ext_resource type="Theme" uid="uid://d2rqp0rit7ww6" path="res://FontTheams/Ubuntu_24_reg.tres" id="1_ap3vs"]
+[ext_resource type="PackedScene" uid="uid://dwh3xiymotgsh" path="res://scenes/history.tscn" id="2_ee15u"]
+[ext_resource type="FontFile" uid="uid://de64tnmnphsmf" path="res://Fonts/UbuntuMono-Regular.ttf" id="3_7khrd"]
+[ext_resource type="PackedScene" uid="uid://bxjb42k7cld24" path="res://scenes/response.tscn" id="4_yxhp0"]
+
+[sub_resource type="Theme" id="Theme_psi8w"]
+resource_local_to_scene = true
+default_font = ExtResource("3_7khrd")
+default_font_size = 24
+
+[sub_resource type="Theme" id="Theme_mqlmx"]
+resource_local_to_scene = true
+default_font = ExtResource("3_7khrd")
+default_font_size = 24
 
 [node name="inputResponse" type="VBoxContainer"]
 script = ExtResource("1_alt2p")
 
-[node name="userHistory" type="Label" parent="."]
+[node name="userHistory" parent="." instance=ExtResource("2_ee15u")]
 layout_mode = 2
-theme = ExtResource("1_ap3vs")
-theme_override_colors/font_color = Color(0.176, 0.96, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = " > heyyyyllllo
-"
+theme = SubResource("Theme_psi8w")
 
-[node name="userResponse" type="Label" parent="."]
+[node name="userResponse" parent="." instance=ExtResource("4_yxhp0")]
 layout_mode = 2
-theme = ExtResource("1_ap3vs")
-text = "Oh that sounds great!"
+theme = SubResource("Theme_mqlmx")
+autowrap_mode = 0
