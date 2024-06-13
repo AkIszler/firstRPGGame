@@ -31,11 +31,11 @@ func _input_text_submitted(new_text: String) -> void:
 		return # prevent empty input
 
 	var inputResponse = InputRespose.instantiate()	
-	inputResponse.Set_Text(new_text, " " + response) #
+	inputResponse.Set_Text(new_text, response) #
 	history_rows.add_child(inputResponse)
 	keep_history_clear()
 
 
 func keep_history_clear():	
 	if history_rows.get_child_count() > max_lines_held:
-		history_rows.remove_child(history_rows.get_children()[0])
+		history_rows.remove_child(history_rows.get_children()[0]) 
