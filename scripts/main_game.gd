@@ -13,14 +13,13 @@ var max_scroll_val = 0;
 @onready var history_rows = $background/margin/Rows/gameInfo/historyScroll/HistoryRow
 @onready var scroll = $background/margin/Rows/gameInfo/historyScroll
 @onready var scrollbar = scroll.get_v_scroll_bar()
+@onready var area_management = $RoomManager
 
 func _ready() -> void:
 	scrollbar.changed.connect(scroll_changed)
 	max_scroll_val = scrollbar.max_value
-	var startingMsg = Response.instantiate()
-	startingMsg.text = "you wake up in a dark room with no memory, a faint noise echoing in the distance, you are in a cell\n\nuse the command 'help' to see your commands"
-	add_response_to_history(startingMsg)
-
+	commandProcess.response_gen.connect(responseGeneration)
+	area_management.init(area_management.get_child(0))
 
 
 func scroll_changed():
@@ -44,6 +43,12 @@ func add_response_to_history(response: Control):
 	history_rows.add_child(response)
 	keep_history_clear()
 
+
+
+func responseGeneration(response_text):
+	var responseMsg = Response.instantiate()
+	responseMsg.text = response_text
+	add_response_to_history(responseMsg)
 
 
 func keep_history_clear():	

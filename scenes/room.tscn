@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://sjc031khtree"]
+
+[ext_resource type="Script" path="res://scripts/room.gd" id="1_e8su4"]
+[ext_resource type="Theme" uid="uid://d2rqp0rit7ww6" path="res://FontTheams/Ubuntu_24_reg.tres" id="1_wrm5d"]
+[ext_resource type="Theme" uid="uid://ckjpfcqlapehs" path="res://FontTheams/Ubuntu_16_reg.tres" id="2_dh58a"]
+
+[node name="Room" type="PanelContainer"]
+custom_minimum_size = Vector2(230, 200)
+offset_right = 230.0
+offset_bottom = 200.0
+script = ExtResource("1_e8su4")
+
+[node name="RoomMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 2
+
+[node name="Rows" type="VBoxContainer" parent="RoomMarginContainer"]
+layout_mode = 2
+
+[node name="RoomName" type="Label" parent="RoomMarginContainer/Rows"]
+layout_mode = 2
+theme = ExtResource("1_wrm5d")
+text = "Room Name"
+horizontal_alignment = 1
+
+[node name="RoomDesctription" type="Label" parent="RoomMarginContainer/Rows"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("2_dh58a")
+text = "This describes the room
+"
+autowrap_mode = 2

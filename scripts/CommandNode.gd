@@ -1,5 +1,13 @@
 extends Node
 
+signal response_gen(response_text)
+
+var current_area = null;
+
+func init(starting_area):
+	changeRoom(starting_area)
+
+
 func Process_Command(input: String):
 	var words = input.split(" ", false, 0)
 	if words.size() == 0:
@@ -37,3 +45,9 @@ func help():
 
 func search():
 	return "you look around the room and find the door isn't latched all of the way"
+
+
+func changeRoom(new_room: Room):
+	current_area = new_room
+	emit_signal("response_gen", "You go to " + new_room.room_description)
+	emit_signal("response_gen", new_room.room_description)

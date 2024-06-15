@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3qjwtpg85xs6"]
+[gd_scene load_steps=12 format=3 uid="uid://b3qjwtpg85xs6"]
 
 [ext_resource type="Script" path="res://scripts/main_game.gd" id="1_btd5m"]
 [ext_resource type="FontFile" uid="uid://de64tnmnphsmf" path="res://Fonts/UbuntuMono-Regular.ttf" id="2_ph74p"]
 [ext_resource type="Script" path="res://scripts/userInput.gd" id="3_02u73"]
 [ext_resource type="Script" path="res://scripts/CommandNode.gd" id="4_qle8l"]
+[ext_resource type="PackedScene" uid="uid://sjc031khtree" path="res://scenes/room.tscn" id="5_abpwl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fohg"]
 bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
@@ -103,6 +104,14 @@ script = ExtResource("3_02u73")
 
 [node name="CommandNode" type="Node" parent="."]
 script = ExtResource("4_qle8l")
+
+[node name="RoomManager" type="Node" parent="."]
+
+[node name="HouseRoom" parent="RoomManager" instance=ExtResource("5_abpwl")]
+offset_left = 3.0
+offset_top = -262.0
+offset_right = 233.0
+offset_bottom = -62.0
 
 [connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="." method="_input_text_submitted"]
 [connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="background/margin/Rows/inputArea/HBoxContainer/userInput" method="_on_text_submitted"]
