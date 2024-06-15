@@ -18,7 +18,7 @@ func _ready() -> void:
 	scrollbar.changed.connect(scroll_changed)
 	max_scroll_val = scrollbar.max_value
 	var startingMsg = Response.instantiate()
-	startingMsg.text = "you wake up in a dark room with no memory, you have to get out! use the command 'help' to see your commands"
+	startingMsg.text = "you wake up in a dark room with no memory, a faint noise echoing in the distance, you are in a cell\n\nuse the command 'help' to see your commands"
 	add_response_to_history(startingMsg)
 
 
