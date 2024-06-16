@@ -9,6 +9,8 @@ custom_minimum_size = Vector2(230, 200)
 offset_right = 230.0
 offset_bottom = 200.0
 script = ExtResource("1_e8su4")
+room_name = "Jail cell"
+room_description = "You wake up in jail cell"
 
 [node name="RoomMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

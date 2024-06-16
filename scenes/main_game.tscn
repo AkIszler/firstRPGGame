@@ -112,6 +112,8 @@ offset_left = 3.0
 offset_top = -262.0
 offset_right = 233.0
 offset_bottom = -62.0
+room_name = "Cell"
+room_description = "a jail cell you don't reconize"
 
 [connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="." method="_input_text_submitted"]
 [connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="background/margin/Rows/inputArea/HBoxContainer/userInput" method="_on_text_submitted"]

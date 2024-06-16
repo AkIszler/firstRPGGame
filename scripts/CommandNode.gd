@@ -28,6 +28,8 @@ func Process_Command(input: String):
 
 		"search": return search()	
 
+		"back": return "You go back"
+
 		_: return "Unrecognized Command"
 
 
@@ -40,14 +42,17 @@ func go(secondWord: String):
 	return "you go %s" % secondWord	
 
 func help():
-	return "help menu\nyou can use 'Go' to move\nyou can use 'Back' to go back\nyou can use'search' to look around the room, or investigate the area"
+	return "help menu\nyou can use 'Go' to move\nyou can use 'Back' to go back\nyou can use 'search' to look around the room, or investigate the area"
 
 
 func search():
 	return "you look around the room and find the door isn't latched all of the way"
 
 
-func changeRoom(new_room: Room):
+func changeRoom(new_room: GameRoom):
 	current_area = new_room
-	emit_signal("response_gen", "You go to " + new_room.room_description)
-	emit_signal("response_gen", new_room.room_description)
+	var messages = "\n".join(PackedStringArray([
+		"You are now in " + new_room.room_name + ". it is " + new_room.room_description,
+		"Exit:"
+	]))
+	emit_signal("response_gen", messages)

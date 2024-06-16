@@ -18,8 +18,10 @@ var max_scroll_val = 0;
 func _ready() -> void:
 	scrollbar.changed.connect(scroll_changed)
 	max_scroll_val = scrollbar.max_value
+
+	responseGeneration("welcome to Jailscape!\ntype 'help' to see available commands")
 	commandProcess.response_gen.connect(responseGeneration)
-	area_management.init(area_management.get_child(0))
+	commandProcess.init(area_management.get_child(0))
 
 
 func scroll_changed():
@@ -45,7 +47,7 @@ func add_response_to_history(response: Control):
 
 
 
-func responseGeneration(response_text):
+func responseGeneration(response_text: String):
 	var responseMsg = Response.instantiate()
 	responseMsg.text = response_text
 	add_response_to_history(responseMsg)
