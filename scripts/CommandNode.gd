@@ -46,13 +46,14 @@ func help():
 
 
 func search():
-	return "you look around the room and find the door isn't latched all of the way"
+	return "you look around"
 
 
 func changeRoom(new_room: GameRoom):
 	current_area = new_room
+	var exit_string = ''.join(PackedStringArray([new_room.exits.keys()]))
 	var messages = "\n".join(PackedStringArray([
 		"You are now in " + new_room.room_name + ". it is " + new_room.room_description,
-		"Exit:"
+		"Exit: " + exit_string
 	]))
 	emit_signal("response_gen", messages)
