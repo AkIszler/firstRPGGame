@@ -49,7 +49,7 @@ func search():
 	return "you look around"
 
 
-func changeRoom(new_room: GameRoom):
+func changeRoom(new_room: GameRoom) -> String:
 	current_area = new_room
 	var exit_string = ''.join(PackedStringArray([new_room.exits.keys()]))
 	var messages = "\n".join(PackedStringArray([
@@ -57,3 +57,4 @@ func changeRoom(new_room: GameRoom):
 		"Exit: " + exit_string
 	]))
 	emit_signal("response_gen", messages)
+	return messages
