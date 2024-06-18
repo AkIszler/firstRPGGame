@@ -15,14 +15,13 @@ var max_scroll_val = 0;
 @onready var scrollbar = scroll.get_v_scroll_bar()
 @onready var area_management = $RoomManager
 
-func _ready() -> void:
+func _ready():
 	scrollbar.changed.connect(scroll_changed)
 	max_scroll_val = scrollbar.max_value
 
-	responseGeneration("welcome to Jailscape!\ntype 'help' to see available commands")
-	commandProcess.response_gen.connect(responseGeneration)
-	commandProcess.init(area_management.get_child(0))
-
+	createResponse("welcome to Jailscape!\ntype 'help' to see available commands")
+	var startingRoomResponse = commandProcess.init(area_management.get_child(0))
+	createResponse(startingRoomResponse)
 
 func scroll_changed():
 	if max_scroll_val != scrollbar.max_value:
@@ -30,7 +29,7 @@ func scroll_changed():
 		scroll.scroll_vertical = max_scroll_val
 
 
-func _input_text_submitted(new_text: String) -> void:
+func _input_text_submitted(new_text: String):
 
 	var response = commandProcess.Process_Command(new_text);
 
@@ -47,7 +46,7 @@ func add_response_to_history(response: Control):
 
 
 
-func responseGeneration(response_text: String):
+func createResponse(response_text: String):
 	var responseMsg = Response.instantiate()
 	responseMsg.text = response_text
 	add_response_to_history(responseMsg)

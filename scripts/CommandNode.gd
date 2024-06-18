@@ -4,8 +4,8 @@ signal response_gen(response_text)
 
 var current_area = null;
 
-func init(starting_area):
-	changeRoom(starting_area)
+func init(starting_area) -> String:
+	return changeRoom(starting_area)
 
 
 func Process_Command(input: String):
