@@ -1,7 +1,5 @@
 extends Node
 
-signal response_gen(response_text)
-
 var current_area = null;
 
 func init(starting_area) -> String:
@@ -39,7 +37,13 @@ func go(secondWord: String):
 	if secondWord == " ":
 		return "go where?"
 
-	return "you go %s" % secondWord	
+	if current_area.exits.keys().has(secondWord):
+		var change_resonse = changeRoom(current_area.exits[secondWord])
+		return  "\n".join(PackedStringArray(["you go %s" % secondWord, change_resonse]))
+	else:	
+		return "You can't go there, there is not an exit going %s" % secondWord		
+
+	
 
 func help():
 	return "help menu\nyou can use 'Go' to move\nyou can use 'Back' to go back\nyou can use 'search' to look around the room, or investigate the area"
@@ -51,10 +55,9 @@ func search():
 
 func changeRoom(new_room: GameRoom) -> String:
 	current_area = new_room
-	var exit_string = ''.join(PackedStringArray([new_room.exits.keys()]))
+	var exit_string = PackedStringArray(new_room.exits.keys())
 	var messages = "\n".join(PackedStringArray([
 		"You are now in " + new_room.room_name + ". it is " + new_room.room_description,
-		"Exit: " + exit_string
+		"Exit: " + " ".join((exit_string))
 	]))
-	emit_signal("response_gen", messages)
 	return messages

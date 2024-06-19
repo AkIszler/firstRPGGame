@@ -123,7 +123,7 @@ offset_top = -262.0
 offset_right = 521.0
 offset_bottom = -62.0
 room_name = "Outside"
-room_description = "you are outside of the house standing in a village"
+room_description = "outside of the house  in the middle of a village"
 
 [connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="." method="_input_text_submitted"]
 [connection signal="text_submitted" from="background/margin/Rows/inputArea/HBoxContainer/userInput" to="background/margin/Rows/inputArea/HBoxContainer/userInput" method="_on_text_submitted"]

@@ -18,7 +18,7 @@ func connect_exit(direction: String, room):
 
         "east": 
             exits[direction] = room
-            room.exits["east"] = self
+            room.exits["west"] = self
 
 
         "north":
